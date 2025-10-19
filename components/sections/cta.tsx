@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function CTASection() {
   return (
@@ -21,19 +21,32 @@ export default function CTASection() {
             animate={{
               x: [0, 100, 0],
             }}
-            transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+            transition={{
+              duration: 8,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "easeInOut",
+            }}
           />
 
           <div className="relative z-10 text-center">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Ready to Transform Your Finances?</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+              Ready to Transform Your Finances?
+            </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Join thousands of users who are already taking control of their money with KUBER.
+              Join thousands of users who are already taking control of their
+              money with KUBER.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg rounded-full"
+                onClick={() =>
+                  window.open(
+                    "https://frontend-three-mu-40.vercel.app/",
+                    "_blank"
+                  )
+                }
               >
                 Try Demo Now
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -54,5 +67,5 @@ export default function CTASection() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

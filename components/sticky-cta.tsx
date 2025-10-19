@@ -23,10 +23,15 @@ export function StickyCTA() {
       >
         <div className="bg-background rounded-full px-6 py-3 flex items-center gap-3">
           <span className="text-sm font-semibold text-foreground">Ready to start?</span>
-          <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full">
-            Try Demo
-            <ArrowRight className="ml-1 w-4 h-4" />
-          </Button>
+         <Button
+  size="sm"
+  className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full"
+  onClick={() => window.open("https://frontend-three-mu-40.vercel.app/", "_blank")}
+>
+  Try Demo
+  <ArrowRight className="ml-1 w-4 h-4" />
+</Button>
+
           <button
             onClick={() => setIsVisible(false)}
             className="text-muted-foreground hover:text-foreground transition-colors"
