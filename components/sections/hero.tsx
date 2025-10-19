@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Confetti } from "@/components/confetti"
-import { useState } from "react"
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Confetti } from "@/components/confetti";
+import { useState } from "react";
 
 export default function HeroSection() {
-  const [showConfetti, setShowConfetti] = useState(false)
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -18,7 +18,7 @@ export default function HeroSection() {
         delayChildren: 0.1,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -27,7 +27,7 @@ export default function HeroSection() {
       y: 0,
       transition: { duration: 0.8, ease: "easeOut" },
     },
-  }
+  };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden">
@@ -39,7 +39,11 @@ export default function HeroSection() {
             y: [0, 30, 0],
             x: [0, 20, 0],
           }}
-          transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+          transition={{
+            duration: 8,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "easeInOut",
+          }}
         />
         <motion.div
           className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-accent/20 to-primary/10 rounded-full blur-3xl"
@@ -47,7 +51,11 @@ export default function HeroSection() {
             y: [0, -30, 0],
             x: [0, -20, 0],
           }}
-          transition={{ duration: 10, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+          transition={{
+            duration: 10,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "easeInOut",
+          }}
         />
       </div>
 
@@ -78,19 +86,25 @@ export default function HeroSection() {
           variants={itemVariants}
           className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed"
         >
-          Track, save, and celebrate your financial journey with KUBER. Simple, visual, and rewarding money management
-          for everyone.
+          Track, save, and celebrate your financial journey with KUBER. Simple,
+          visual, and rewarding money management for everyone.
         </motion.p>
 
-        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <motion.div
+          variants={itemVariants}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+        >
           <Button
             size="lg"
             className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg rounded-full"
-            onClick={() => setShowConfetti(true)}
+            onClick={() =>
+              window.open("https://frontend-three-mu-40.vercel.app/", "_blank")
+            }
           >
             Get Started – Free Demo
             <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
+
           <Button
             size="lg"
             variant="outline"
@@ -100,12 +114,15 @@ export default function HeroSection() {
           </Button>
         </motion.div>
 
-        <motion.div variants={itemVariants} className="mt-16 text-sm text-muted-foreground">
+        <motion.div
+          variants={itemVariants}
+          className="mt-16 text-sm text-muted-foreground"
+        >
           No credit card required • Free forever plan available
         </motion.div>
       </motion.div>
 
       {showConfetti && <Confetti />}
     </section>
-  )
+  );
 }
