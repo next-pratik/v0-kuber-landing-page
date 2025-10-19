@@ -86,13 +86,7 @@ export default function HeroSection() {
           <Button
             size="lg"
             className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg rounded-full"
-            onClick={() => {
-  setShowConfetti(true)
-  setTimeout(() => {
-    window.open("https://frontend-three-mu-40.vercel.app/", "_blank", "noopener,noreferrer")
-  }, 800) // wait 0.8s before opening
-}}
-
+            onClick={() => setShowConfetti(true)}
           >
             Get Started – Free Demo
             <ArrowRight className="ml-2 w-5 h-5" />
