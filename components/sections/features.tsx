@@ -36,8 +36,8 @@ const features = [
   },
   {
     icon: Lightbulb,
-    title: "Money Tips",
-    description: "Learn financial best practices with curated tips and educational content.",
+    title: "Bill Reminders",
+    description: "Never miss a bill again with automatic reminders and notifications.",
     emoji: "💡",
   },
 ]

@@ -54,7 +54,7 @@ export default function BudgetPlanningSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Budget Sliders */}
           <motion.div
             className="space-y-8"
@@ -100,8 +100,32 @@ export default function BudgetPlanningSection() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="w-full max-w-xs">
+            <div className="relative w-full max-w-xs">
               <svg viewBox="0 0 200 200" className="w-full h-full">
+                <defs>
+                  {categories.map((category) => {
+                    const colorMap = {
+                      "from-green-400 to-emerald-500": { start: "#4ade80", end: "#10b981" },
+                      "from-blue-400 to-cyan-500": { start: "#60a5fa", end: "#06b6d4" },
+                      "from-purple-400 to-pink-500": { start: "#a78bfa", end: "#ec4899" },
+                      "from-orange-400 to-red-500": { start: "#fb923c", end: "#ef4444" }
+                    }
+                    const colors = colorMap[category.color as keyof typeof colorMap]
+                    return (
+                      <linearGradient
+                        key={`gradient-${category.key}`}
+                        id={`gradient-${category.key}`}
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="100%"
+                      >
+                        <stop offset="0%" stopColor={colors.start} />
+                        <stop offset="100%" stopColor={colors.end} />
+                      </linearGradient>
+                    )
+                  })}
+                </defs>
                 {categories.map((category, index) => {
                   const startAngle =
                     categories
@@ -130,23 +154,8 @@ export default function BudgetPlanningSection() {
                     />
                   )
                 })}
-                <defs>
-                  {categories.map((category) => (
-                    <linearGradient
-                      key={`gradient-${category.key}`}
-                      id={`gradient-${category.key}`}
-                      x1="0%"
-                      y1="0%"
-                      x2="100%"
-                      y2="100%"
-                    >
-                      <stop offset="0%" stopColor={category.color.split(" ")[1]} />
-                      <stop offset="100%" stopColor={category.color.split(" ")[3]} />
-                    </linearGradient>
-                  ))}
-                </defs>
               </svg>
-              <div className="absolute inset-0 flex items-center justify-center">
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="text-center">
                   <p className="text-2xl font-bold text-foreground">$5,000</p>
                   <p className="text-sm text-muted-foreground">Monthly Budget</p>
