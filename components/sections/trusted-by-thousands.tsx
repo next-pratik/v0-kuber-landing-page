@@ -7,25 +7,33 @@ const stats = [
     icon: "👥",
     value: "12,450+",
     label: "Active Users",
-    bgColor: "bg-blue-100",
+    bgColor: "bg-gradient-to-br from-blue-500/10 to-blue-600/5",
+    borderColor: "border-blue-200/50 dark:border-blue-800/50",
+    iconColor: "text-blue-600 dark:text-blue-400",
   },
   {
     icon: "⭐",
     value: "4.8/5",
     label: "App Rating",
-    bgColor: "bg-yellow-100",
+    bgColor: "bg-gradient-to-br from-yellow-500/10 to-yellow-600/5",
+    borderColor: "border-yellow-200/50 dark:border-yellow-800/50",
+    iconColor: "text-yellow-600 dark:text-yellow-400",
   },
   {
     icon: "💰",
-    value: "₹3.2Cr+",
+    value: "₹5.6L+",
     label: "Money Saved",
-    bgColor: "bg-green-100",
+    bgColor: "bg-gradient-to-br from-green-500/10 to-green-600/5",
+    borderColor: "border-green-200/50 dark:border-green-800/50",
+    iconColor: "text-green-600 dark:text-green-400",
   },
   {
     icon: "❤️",
     value: "97%",
     label: "Satisfaction",
-    bgColor: "bg-pink-100",
+    bgColor: "bg-gradient-to-br from-pink-500/10 to-pink-600/5",
+    borderColor: "border-pink-200/50 dark:border-pink-800/50",
+    iconColor: "text-pink-600 dark:text-pink-400",
   },
 ]
 
@@ -46,12 +54,12 @@ export default function TrustedByThousandsSection() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
+      transition: { duration: 0.6, ease: "easeOut" as const },
     },
   }
 
   return (
-    <section className="py-20 px-4 relative bg-gradient-to-br from-purple-50 to-white">
+    <section className="py-20 px-4 relative bg-gradient-to-br from-primary/5 via-accent/5 to-primary/5 dark:from-primary/10 dark:via-accent/10 dark:to-primary/10">
       <div className="max-w-6xl mx-auto">
         <motion.div
           className="text-center mb-16"
@@ -60,10 +68,10 @@ export default function TrustedByThousandsSection() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Trusted by Thousands
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Join our growing community of financially savvy users.
           </p>
         </motion.div>
@@ -79,12 +87,12 @@ export default function TrustedByThousandsSection() {
             <motion.div
               key={index}
               variants={itemVariants}
-              className={`group relative p-8 rounded-2xl ${stat.bgColor} border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-lg hover:shadow-gray-200 backdrop-blur-sm`}
+              className={`group relative p-8 rounded-2xl ${stat.bgColor} border ${stat.borderColor} hover:border-opacity-80 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 backdrop-blur-sm`}
             >
               <div className="text-center">
-                <div className="text-4xl mb-4">{stat.icon}</div>
-                <div className="text-3xl font-bold text-gray-800 mb-2">{stat.value}</div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
+                <div className={`text-4xl mb-4 ${stat.iconColor}`}>{stat.icon}</div>
+                <div className="text-3xl font-bold text-foreground mb-2">{stat.value}</div>
+                <div className="text-muted-foreground font-medium">{stat.label}</div>
               </div>
             </motion.div>
           ))}
